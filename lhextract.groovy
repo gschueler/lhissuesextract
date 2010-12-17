@@ -77,8 +77,8 @@ public printTickets(url,projectId, params){
     def xml = parseUrl(new URL(url,"/projects/"+projectId+"/tickets.xml"+makeQuery(params)))
     println "Tickets: "
     
-    xml.ticket.each{
-        println "* ["+it.title+"]("+url+"/projects/"+projectId+"/tickets/"+it.id+")"
+    xml.ticket.each{ t->
+        println '* [#'+t.number.text()+" - ${t.title}]("+url+"/projects/"+projectId+"/tickets/"+t.number.text()+")"
     }
 }
 public String makeQuery(params){
