@@ -74,11 +74,23 @@ if(args.length>3){
 printTickets(url,projectId,params)
 
 public printTickets(url,projectId, params){
-    def xml = parseUrl(new URL(url,"/projects/"+projectId+"/tickets.xml"+makeQuery(params)))
     println "Tickets: "
-    
-    xml.ticket.each{ t->
-        println '* [#'+t.number.text()+" - ${t.title}]("+url+"/projects/"+projectId+"/tickets/"+t.number.text()+")"
+    def done=false
+    def page=1
+    while(!done){
+        int count=0
+
+        def xml = parseUrl(new URL(url,"/projects/"+projectId+"/tickets.xml"+makeQuery(params)+(page?"&page="+page:'')))
+
+        xml.ticket.each{ t->
+            println '* [#'+t.number.text()+" - ${t.title}]("+url+"/projects/"+projectId+"/tickets/"+t.number.text()+")"
+            count++
+        }
+        if(count<1){
+            done=true
+        }else{
+            page++
+        }
     }
 }
 public String makeQuery(params){
