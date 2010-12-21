@@ -11,3 +11,8 @@ Usage:
     groovy lhextract.groovy <url> [project [milestone]] [keyword=value ...]
 
 Final arguments of the form `keyword=value` are used as additional ticket query parameters.  See the [Lighthouse Search Documentation](http://help.lighthouseapp.com/kb/getting-started/how-do-i-search-for-tickets) for info on types of searches.
+
+Examples
+-----
+
+    groovy lhextract.groovy http://rundeck.lighthouseapp.com 'Rundeck Development' 'Rundeck 1.0' state=resolved
