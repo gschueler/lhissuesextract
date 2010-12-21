@@ -1,4 +1,4 @@
-Generates Markdown formatted text from Lighthouse
+Generates Markdown formatted text from Lighthouse Issues
 ----------------------
 
 *author*: Greg Schueler, <greg.schueler@gmail.com>
